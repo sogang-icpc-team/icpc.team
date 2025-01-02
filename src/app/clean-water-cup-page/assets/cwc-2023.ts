@@ -11,10 +11,7 @@ export const CWC_2023 = {
   dateStr: "2023년 5월 20일(토) 오후 2시 ~ 오후 5시",
   location: "서강대학교 다산관(D관) D104, 105호",
   links: {
-    boj: [
-      "https://www.acmicpc.net/contest/view/989",
-      "https://www.acmicpc.net/contest/view/990",
-    ],
+    boj: "https://www.acmicpc.net/category/847",
   },
   awards: {
     round: {
