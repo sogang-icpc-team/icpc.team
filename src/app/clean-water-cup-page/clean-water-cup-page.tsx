@@ -460,9 +460,13 @@ const _CleanWaterCupPage = ({ className }: { className?: string }) => {
               제{selectedData.nth}회<br />
               서강대학교 청정수컵
             </ContestTitle>
-            <ContestLinkButton className="contest-link__button">
-              BOJ 대회 바로가기 →
-            </ContestLinkButton>
+            <OpenInANewTab
+              href={selectedData.links.boj}
+            >
+              <ContestLinkButton className="contest-link__button">
+                BOJ 대회 바로가기 →
+              </ContestLinkButton>
+            </OpenInANewTab>
           </div>
 
           <ContestInfoItemWrapper>

@@ -11,10 +11,7 @@ export const CWC_2022 = {
   dateStr: "2022년 5월 14일(토) 오후 2시 ~ 오후 5시",
   location: "서강대학교 리치과학관(R관) R912, R914호",
   links: {
-    boj: [
-      "https://www.acmicpc.net/contest/view/796",
-      "https://www.acmicpc.net/contest/view/797",
-    ],
+    boj: "https://www.acmicpc.net/category/696",
   },
   awards: {
     round: {
