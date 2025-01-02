@@ -189,6 +189,11 @@ const ContestLinkButton = styled.button`
   border: 1px solid #212427;
   border-radius: 8px;
   background: transparent;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #5656560f;
+  }
 `;
 
 const ContestInfoItemWrapper = styled.div`
