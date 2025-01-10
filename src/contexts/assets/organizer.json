@@ -1,5 +1,18 @@
 [
   {
+    "year": "2025",
+    "president": {
+      "name": "김태윤",
+      "boj": "teyn",
+      "email": "teyn0721@sogang.ac.kr"
+    },
+    "vicePresident": {
+      "name": "이재찬",
+      "boj": "dlwocks1209",
+      "email": "dlwocks051209@gmail.com"
+    }
+  },
+  {
     "year": "2024",
     "president": {
       "name": "박준영",
