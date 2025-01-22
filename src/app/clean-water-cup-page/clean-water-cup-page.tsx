@@ -35,11 +35,20 @@ const Page = styled.div`
   background-color: #f0efe7;
   padding: 85px var(--padding-left);
   overflow-x: hidden;
+
+  @media(max-width: 1023px) {
+    padding: 85px 48px;
+  }
 `;
 
 const Hero = styled.div`
   display: flex;
   justify-content: space-between;
+
+  @media(max-width: 1023px) {
+    flex-direction: column;
+    gap: 32px;
+  }
 `;
 
 const Title = styled.div`
@@ -50,6 +59,11 @@ const Title = styled.div`
 const InfoItemWrapper = styled.div`
   display: flex;
   gap: 98px;
+
+  @media(max-width: 1023px) {
+    flex-direction: column;
+    gap: 32px;
+  }
 `;
 
 const InfoItem = styled.div`
@@ -71,10 +85,15 @@ const HeroImageWrapper = styled.div`
   line-height: 0;
 `;
 
+const HeroImage1 = styled.img`
+  width: 120%;
+`;
+
 const HeroImage2 = styled.img`
   display: block;
+  width: 58%;
   transform: translateY(-50%);
-  margin-left: 736px;
+  margin-left: 60%;
 `;
 
 const SectionDivider = styled.div`
@@ -91,6 +110,11 @@ const Section = styled.div`
 const SectionHeader = styled.div`
   display: flex;
   justify-content: space-between;
+
+  @media(max-width: 1023px) {
+    flex-direction: column;
+    gap: 32px;
+  }
 `;
 
 const SectionHeaderTitle = styled.div`
@@ -107,11 +131,16 @@ const SectionHeaderRightImage = styled.img`
   margin-right: calc(var(--padding-left) * -1);
 `;
 
+const RoundComparisonTableWrapper = styled.div`
+  width: 100%;
+  overflow-y: auto;
+`;
+
 const RoundComparisonTable = styled.table`
   width: 100%;
   margin-top: 80px;
-
   text-align: center;
+  min-width: 640px;
 
   td,
   th {
@@ -176,6 +205,11 @@ const Contest = styled.div`
   padding: 38px 0;
   border-top: 2px solid #6b6b6b;
   border-bottom: 2px solid #6b6b6b;
+
+  @media(max-width: 1023px) {
+    flex-direction: column;
+    gap: 32px;
+  }
 `;
 
 const ContestTitle = styled.div`
@@ -214,6 +248,17 @@ const NewbieOldbieWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 154px;
+
+  @media(max-width: 1023px) {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    
+    .newbie__wrapper, 
+    .oldbie__wrapper {
+      width: 100%;
+    }
+  }
 `;
 
 const RoundInfoBadge = styled.div`
@@ -222,6 +267,11 @@ const RoundInfoBadge = styled.div`
   font-weight: 500;
   margin-top: 8px;
   margin-bottom: 4px;
+`;
+
+const AwardHistoryTableWrapper = styled.div`
+  width: 100%;
+  overflow-y: auto;
 `;
 
 const AwardHistoryTable = styled.table`
@@ -241,6 +291,10 @@ const AwardHistoryTable = styled.table`
 
   tr:nth-child(2n) {
     background-color: rgba(0, 0, 0, 0.02);
+  }
+
+  @media(max-width: 1023px) {
+    min-width: 400px;
   }
 `;
 
@@ -262,6 +316,11 @@ const MakerCheckerWrapper = styled.div`
   th:nth-child(2) {
     width: 160px;
   }
+
+  @media(max-width: 1023px) {
+    flex-direction: column;
+    gap: 58px;
+  }
 `;
 
 const Caption = styled.div`
@@ -278,6 +337,7 @@ const SponsorLogoImageWrapper = styled.div`
   display: flex;
   align-items: baseline;
   gap: 20px;
+  flex-wrap: wrap;
 
   img {
     width: 105px;
@@ -353,7 +413,7 @@ const _CleanWaterCupPage = ({ className }: { className?: string }) => {
       </Description>
 
       <HeroImageWrapper>
-        <img alt="hero-1" src={HeroImage1Jpg} />
+        <HeroImage1 alt="hero-1" src={HeroImage1Jpg} />
         <HeroImage2 alt="hero-2" src={HeroImage2Jpg} />
       </HeroImageWrapper>
 
@@ -377,37 +437,39 @@ const _CleanWaterCupPage = ({ className }: { className?: string }) => {
           />
         </SectionHeader>
 
-        <RoundComparisonTable>
-          <thead>
-            <tr>
-              <th />
-              <th>참가 조건</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>새내기 Round</th>
-              <td>Sogang ICPC Team 소속 당해년도 신입생</td>
-            </tr>
-            <tr>
-              <th>청정수 Round</th>
-              <td>
-                <span style={{ textAlign: "left" }}>
-                  아래 조건에 해당하지 <u>않는</u> 모든 Sogang ICPC Team 학회원
-                  <br />
-                  <ul style={{ width: "max-content", margin: "20px auto 0" }}>
-                    <li>Codeforces {">"}= 1600</li>
-                    <li>AtCoder {">"}= 1200</li>
-                    <li>solved.ac {">"}= Platinum III</li>
-                    <li>
-                      ICPC/UCPC/SUAPC/Camp Contest/SPC/SCPC/청정수컵 수상자
-                    </li>
-                  </ul>
-                </span>
-              </td>
-            </tr>
-          </tbody>
-        </RoundComparisonTable>
+        <RoundComparisonTableWrapper>
+          <RoundComparisonTable>
+            <thead>
+              <tr>
+                <th />
+                <th>참가 조건</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>새내기 Round</th>
+                <td>Sogang ICPC Team 소속 당해년도 신입생</td>
+              </tr>
+              <tr>
+                <th>청정수 Round</th>
+                <td>
+                  <span style={{ textAlign: "left" }}>
+                    아래 조건에 해당하지 <u>않는</u> 모든 Sogang ICPC Team 학회원
+                    <br />
+                    <ul style={{ width: "max-content", margin: "20px auto 0" }}>
+                      <li>Codeforces {">"}= 1600</li>
+                      <li>AtCoder {">"}= 1200</li>
+                      <li>solved.ac {">"}= Platinum III</li>
+                      <li>
+                        ICPC/UCPC/SUAPC/Camp Contest/SPC/SCPC/청정수컵 수상자
+                      </li>
+                    </ul>
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </RoundComparisonTable>
+        </RoundComparisonTableWrapper>
       </Section>
 
       <SectionDivider />
@@ -493,72 +555,76 @@ const _CleanWaterCupPage = ({ className }: { className?: string }) => {
               <RoundInfoBadge style={{ borderColor: "#cedfc8" }}>
                 새내기 Round
               </RoundInfoBadge>
-              <AwardHistoryTable>
-                <thead>
-                  <tr>
-                    <th style={{ width: "84px" }}>순위</th>
-                    <th style={{ width: "88px" }}>솔브 수</th>
-                    <th>이름</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {selectedData.awards.round.newbie.map((data) => (
-                    <tr key={data.rank}>
-                      <td>
-                        {data.rank}
-                        <AwardBadge
-                          variant={data.variant as TAwardBadgeVariant}
-                        />
-                      </td>
-                      <td>{data.solved}</td>
-                      <td>
-                        {data.name}
-                        <OpenInANewTab
-                          href={`https://acmicpc.net/user/${data.bojHandle}`}
-                        >
-                          ({data.bojHandle})
-                        </OpenInANewTab>
-                      </td>
+              <AwardHistoryTableWrapper>
+                <AwardHistoryTable>
+                  <thead>
+                    <tr>
+                      <th style={{ width: "84px" }}>순위</th>
+                      <th style={{ width: "88px" }}>솔브 수</th>
+                      <th>이름</th>
                     </tr>
-                  ))}
-                </tbody>
-              </AwardHistoryTable>
+                  </thead>
+                  <tbody>
+                    {selectedData.awards.round.newbie.map((data) => (
+                      <tr key={data.rank}>
+                        <td>
+                          {data.rank}
+                          <AwardBadge
+                            variant={data.variant as TAwardBadgeVariant}
+                          />
+                        </td>
+                        <td>{data.solved}</td>
+                        <td>
+                          {data.name}
+                          <OpenInANewTab
+                            href={`https://acmicpc.net/user/${data.bojHandle}`}
+                          >
+                            ({data.bojHandle})
+                          </OpenInANewTab>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </AwardHistoryTable>
+              </AwardHistoryTableWrapper>
             </div>
 
             <div className="oldbie__wrapper">
               <RoundInfoBadge style={{ borderColor: "#b4d9dd" }}>
                 청정수 Round
               </RoundInfoBadge>
-              <AwardHistoryTable>
-                <thead>
-                  <tr>
-                    <th style={{ width: "84px" }}>순위</th>
-                    <th style={{ width: "88px" }}>솔브 수</th>
-                    <th>이름</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {selectedData.awards.round.oldbie.map((data) => (
-                    <tr key={data.rank}>
-                      <td>
-                        {data.rank}
-                        <AwardBadge
-                          variant={data.variant as TAwardBadgeVariant}
-                        />
-                      </td>
-                      <td>{data.solved}</td>
-                      <td>
-                        {data.name}
-                        <OpenInANewTab
-                          href={`https://acmicpc.net/user/${data.bojHandle}`}
-                        >
-                          ({data.bojHandle})
-                        </OpenInANewTab>
-                      </td>
+              <AwardHistoryTableWrapper>
+                <AwardHistoryTable>
+                  <thead>
+                    <tr>
+                      <th style={{ width: "84px" }}>순위</th>
+                      <th style={{ width: "88px" }}>솔브 수</th>
+                      <th>이름</th>
                     </tr>
-                  ))}
-                </tbody>
-              </AwardHistoryTable>
+                  </thead>
+                  <tbody>
+                    {selectedData.awards.round.oldbie.map((data) => (
+                      <tr key={data.rank}>
+                        <td>
+                          {data.rank}
+                          <AwardBadge
+                            variant={data.variant as TAwardBadgeVariant}
+                          />
+                        </td>
+                        <td>{data.solved}</td>
+                        <td>
+                          {data.name}
+                          <OpenInANewTab
+                            href={`https://acmicpc.net/user/${data.bojHandle}`}
+                          >
+                            ({data.bojHandle})
+                          </OpenInANewTab>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </AwardHistoryTable>
+              </AwardHistoryTableWrapper>
             </div>
           </NewbieOldbieWrapper>
         </AwardHistoryWrapper>
@@ -566,57 +632,61 @@ const _CleanWaterCupPage = ({ className }: { className?: string }) => {
         <MakerCheckerWrapper>
           <div className="maker__wrapper">
             <Caption>출제진</Caption>
-            <AwardHistoryTable>
-              <thead>
-                <tr>
-                  <th>이름</th>
-                  <th>BOJ</th>
-                  <th>소속</th>
-                </tr>
-              </thead>
-              <tbody>
-                {selectedData.examiners.map((p) => (
-                  <tr key={p.bojHandle}>
-                    <td>{p.name}</td>
-                    <td>
-                      <OpenInANewTab
-                        href={`https://acmicpc.net/user/${p.bojHandle}`}
-                      >
-                        {p.bojHandle}
-                      </OpenInANewTab>
-                    </td>
-                    <td>{p.school}</td>
+            <AwardHistoryTableWrapper>
+              <AwardHistoryTable>
+                <thead>
+                  <tr>
+                    <th>이름</th>
+                    <th>BOJ</th>
+                    <th>소속</th>
                   </tr>
-                ))}
-              </tbody>
-            </AwardHistoryTable>
+                </thead>
+                <tbody>
+                  {selectedData.examiners.map((p) => (
+                    <tr key={p.bojHandle}>
+                      <td>{p.name}</td>
+                      <td>
+                        <OpenInANewTab
+                          href={`https://acmicpc.net/user/${p.bojHandle}`}
+                        >
+                          {p.bojHandle}
+                        </OpenInANewTab>
+                      </td>
+                      <td>{p.school}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </AwardHistoryTable>
+            </AwardHistoryTableWrapper>
           </div>
           <div className="checker__wrapper">
             <Caption>검수진</Caption>
-            <AwardHistoryTable>
-              <thead>
-                <tr>
-                  <th>이름</th>
-                  <th>BOJ 핸들</th>
-                  <th>소속</th>
-                </tr>
-              </thead>
-              <tbody>
-                {selectedData.checkers.map((p) => (
-                  <tr key={p.bojHandle}>
-                    <td>{p.name}</td>
-                    <td>
-                      <OpenInANewTab
-                        href={`https://acmicpc.net/user/${p.bojHandle}`}
-                      >
-                        {p.bojHandle}
-                      </OpenInANewTab>
-                    </td>
-                    <td>{p.school}</td>
+            <AwardHistoryTableWrapper>
+              <AwardHistoryTable>
+                <thead>
+                  <tr>
+                    <th>이름</th>
+                    <th>BOJ 핸들</th>
+                    <th>소속</th>
                   </tr>
-                ))}
-              </tbody>
-            </AwardHistoryTable>
+                </thead>
+                <tbody>
+                  {selectedData.checkers.map((p) => (
+                    <tr key={p.bojHandle}>
+                      <td>{p.name}</td>
+                      <td>
+                        <OpenInANewTab
+                          href={`https://acmicpc.net/user/${p.bojHandle}`}
+                        >
+                          {p.bojHandle}
+                        </OpenInANewTab>
+                      </td>
+                      <td>{p.school}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </AwardHistoryTable>
+            </AwardHistoryTableWrapper>
           </div>
         </MakerCheckerWrapper>
 
