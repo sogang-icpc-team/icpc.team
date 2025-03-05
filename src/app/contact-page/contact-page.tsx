@@ -29,11 +29,8 @@ const _ContactPage = ({ className }: { className?: string }) => {
         <Section>
           <Section.Title>가입</Section.Title>
           <Section.Body>
-            3월 3일까지 모집을 진행합니다. 자세한 내용은{" "}
-            <OpenInANewTab href="https://forms.gle/ACr3NfLfHwQ8BrH38">
-              구글 폼
-            </OpenInANewTab>
-            을 확인해 주세요.
+            현재 모집기간이 아닙니다. 매년 3월 초, 6월 말, 12월 말에 모집을
+            진행합니다. 해당 기간에 에브리타임, 서담 홍보글을 확인해주세요.
           </Section.Body>
         </Section>
         <Section>
