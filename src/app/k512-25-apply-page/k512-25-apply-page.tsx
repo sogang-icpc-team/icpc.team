@@ -1,8 +1,7 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { EmptyLink } from "@ui/button/empty-link";
 import { routes } from "../../routes/routes";
 import ArrowLeftIcon from "@heroicons/react/24/solid/ArrowLeftIcon";
-import { FlexRow } from "@ui/flex/flex";
 import { FlexCol } from "@ui/flex/flex";
 
 const admissionUrl = "https://docs.google.com/forms/d/e/1FAIpQLSd-cZiYuSNUA342q2m7U-TzOi8woOJq4OcDTvM6H-5bpUC6SA/viewform?embedded=true";

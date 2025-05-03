@@ -7,6 +7,7 @@ import { SpcPage } from "../app/spc-page/spc-page";
 import { HistoryPage } from "../app/history-page/history-page";
 import { CleanWaterCupPage } from "../app/clean-water-cup-page/clean-water-cup-page";
 import K512ApplyPage from "../app/k512-25-apply-page/k512-25-apply-page";
+import {Spc24ApplyPage} from "../app/spc-24-apply-page/spc-24-apply-page";
 // import { Spc24ApplyPage } from "../app/spc-24-apply-page/spc-24-apply-page";
 
 const _routes = {
@@ -25,11 +26,9 @@ const _routes = {
   spc: {
     component: <SpcPage />,
   },
-  /*
   spc24Apply: {
     component: <Spc24ApplyPage />,
   },
-  */
   applyK512: {
     component: <K512ApplyPage />,
   },

@@ -27,7 +27,8 @@
   },
   "scripts": {
     "react:dev": "craco start",
-    "react:build": "craco build"
+    "react:build": "craco build",
+    "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}' --max-warnings=0"
   },
   "eslintConfig": {
     "extends": [

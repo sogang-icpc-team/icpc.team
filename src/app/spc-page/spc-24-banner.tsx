@@ -88,7 +88,7 @@ const InfoValue = styled.span`
   font-size: 1.2rem;
 `;
 
-/*
+/* eslint-disable @typescript-eslint/no-unused-vars */
 const _Spc24Banner = ({ className }: { className?: string }) => {
   return (
     <div className={className}>
@@ -119,6 +119,8 @@ const _Spc24Banner = ({ className }: { className?: string }) => {
     </div>
   );
 };
+
+/* eslint-disable @typescript-eslint/no-unused-vars */
 export const Spc24Banner = styled(_Spc24Banner)`
   position: relative;
 
@@ -142,4 +144,3 @@ export const Spc24Banner = styled(_Spc24Banner)`
     padding-bottom: 40px;
   }
 `;
-*/
