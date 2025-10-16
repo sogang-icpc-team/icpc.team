@@ -16,6 +16,10 @@ const admissionUrl =
   "https://docs.google.com/forms/d/e/1FAIpQLSfTatVYc3_e83678OVtDkyn26fHv3eEx9B6odVVdh-9At6UWQ/viewform?embedded=true";
 
 const BodyStyles = createGlobalStyle`
+  * {
+    position: relative;
+  }
+  
   body {
     max-width: unset;
   }
@@ -68,9 +72,12 @@ const BackgroundText = styled.span<{ top: number, position: "left" | "right" }>`
   position: absolute;
   font-weight: 900;
   font-size: 85vw;
-  z-index: -1;
   top: ${({ top }) => top * 30 - 16}vw;
   color: rgb(249, 239, 239);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 
   ${({ position }) => position === "left" ? 
   css`
@@ -169,14 +176,14 @@ const _Spc25ApplyPage = ({ className }: { className?: string }) => {
         <span>이전으로 돌아가기</span>
       </GoBackIcon>
 
+      <BackgroundText top={0} position="left">S</BackgroundText>
+      <BackgroundText top={1} position="right">P</BackgroundText>
+      <BackgroundText top={2} position="left">C</BackgroundText>
+
       <TitleWrapper>
         <SubTitle>Sogang Programming Contest 2025</SubTitle>
         <Title>서강대학교 프로그래밍 대회</Title>
       </TitleWrapper>
-
-      <BackgroundText top={0} position="left">S</BackgroundText>
-      <BackgroundText top={1} position="right">P</BackgroundText>
-      <BackgroundText top={2} position="left">C</BackgroundText>
 
       <DateLocationWrapper>
         <FlexRow>
@@ -207,7 +214,6 @@ const _Spc25ApplyPage = ({ className }: { className?: string }) => {
 };
 
 export const Spc25ApplyPage = styled(_Spc25ApplyPage)`
-  z-index: -2;
   position: relative;
   overflow: hidden;
   background: rgb(251, 248, 248);
