@@ -1,7 +1,6 @@
 import styled, { createGlobalStyle, css } from "styled-components";
 import confetti from "canvas-confetti";
-import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
 
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/solid";
@@ -13,7 +12,6 @@ import { OpenInANewTab } from "@ui/open-in-a-new-tab";
 
 import { routes } from "../../routes/routes";
 import { HeroImage } from "./hero-image";
-import { Loader } from "./loader";
 
 import MinistryOfScienceAndIctPng from "./assets/sponser-logos/ministry-of-science-and-ict.png";
 import IITPPng from "./assets/sponser-logos/iitp.png";
@@ -24,6 +22,7 @@ import SolvedAcPng from "./assets/sponser-logos/solved-ac.png";
 import StartlinkPng from "./assets/sponser-logos/startlink.png";
 import SogangPng from "./assets/sponser-logos/sogang.png";
 import SogangSwPng from "./assets/sponser-logos/sogang-sw.png";
+import IFrame from "@ui/iframe/iframe";
 
 const admissionUrl =
   "https://docs.google.com/forms/d/e/1FAIpQLSd98rqUwUR1FVs1JJm8VkI0DaMAeP22SVmed_vVK6cRE3Rodw/viewform?embedded=true";
@@ -165,16 +164,8 @@ const OpenFormInNewTab = styled(OpenInANewTab)`
     font-size: 1.2rem;
   }
 `;
-const IFrame = styled.iframe`
-  display: block;
 
-  margin: 0 auto;
-
-  width: 740px;
-  max-width: 100%;
-`;
 const _Spc24ApplyPage = ({ className }: { className?: string }) => {
-  const [isIframeLoading, setIsIframeLoading] = useState(true);
   const isMobile = useMediaQuery({
     query: "(max-width: 1100px)",
   });
@@ -306,32 +297,9 @@ const _Spc24ApplyPage = ({ className }: { className?: string }) => {
             <ArrowTopRightOnSquareIcon style={{ width: "1rem" }} width={12} />
           </OpenFormInNewTab>
         </Label>
-        <div style={{ position: "relative" }}>
-          <AnimatePresence>
-            {isIframeLoading && (
-              <motion.div
-                initial={{ opacity: 1 }}
-                animate={["opacity"]}
-                transition={{ duration: 0.8 }}
-                exit={{
-                  opacity: 0,
-                }}
-              >
-                <Loader />
-              </motion.div>
-            )}
-          </AnimatePresence>
-          <IFrame
-            src={admissionUrl}
-            title="2024 SPC 신청"
-            height={3327}
-            scrolling="no"
-            frameBorder={0}
-            marginWidth={0}
-            marginHeight={0}
-            onLoad={() => setIsIframeLoading(false)}
-          />
-        </div>
+        <IFrame
+          admissionUrl={admissionUrl}
+        />
       </FlexCol>
     </div>
   );
