@@ -44,7 +44,7 @@ const _HistoryPage = ({ className }: { className?: string }) => {
       </Page.Title>
       <HeroImage src={ScoreboardImage} alt="scoreboard" />
       <Page.Body>
-        <SelectedHistoryContextProvider initialValue={{ year: 2024 }}>
+        <SelectedHistoryContextProvider initialValue={{ year: 2025 }}>
           <Section>
             <Section.Title>
               <span>연도별 대회 기록</span>
