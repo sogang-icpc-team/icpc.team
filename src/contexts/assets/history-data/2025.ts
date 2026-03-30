@@ -73,9 +73,10 @@ export default {
       columns: ["#", "=", "팀", "멤버"],
       data: [
         ["18", "5", "goraani never dies", "강효규, 김동건, 조원빈"],
+        ["19", "5", "조민수의새로운데스크디자인하마지아키블루아카데스크테리어세트", "채성우, 박성준, 박용한(SSU)"],
         ["57", "2", "LittlEHearTs", "김규민, 노주환, 양제웅"],
       ],
-      award: ["", ""],
+      award: ["", "", ""],
       links: [
         ["공식 사이트", "https://ucpc.me"],
         ["스코어보드", "https://www.acmicpc.net/contest/spotboard/1531"],
