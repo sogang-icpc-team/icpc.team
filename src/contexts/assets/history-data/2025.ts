@@ -38,6 +38,19 @@ export default {
       review: [],
     },
     {
+      title: "LG Collegiate Programming Contest 2025",
+      columns: ["#", "이름"],
+      data: [
+        ["16", "강효규"],
+      ],
+      award: [""],
+      links: [
+        ["공식 사이트", "https://www.lgsdc.com/program/lgcpc.php"],
+        ["스코어보드", "https://www.acmicpc.net/contest/board/1570"],
+      ],
+      review: [],
+    },
+    {
       title: "SUAPC 2025 Summer",
       columns: ["#", "=", "팀", "멤버"],
       data: [
