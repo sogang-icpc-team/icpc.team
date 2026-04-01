@@ -15,6 +15,18 @@ export default {
       review: [],
     },
     {
+      title: "NYPC 2025 Code Battle",
+      columns: ["#", "팀", "멤버"],
+      data: [
+        ["-", "티미름", "이재혁, 강효규, 김서인, 김진수"],
+      ],
+      award: [""],
+      links: [
+        ["공식 사이트", "https://battle.nypc.co.kr/ko"],
+      ],
+      review: [],
+    },
+    {
       title: "2025 ICPC Asia Seoul Preliminary Contest",
       columns: ["#", "=", "팀", "멤버"],
       data: [
