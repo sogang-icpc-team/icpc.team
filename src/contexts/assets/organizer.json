@@ -1,5 +1,18 @@
 [
   {
+    "year": "2026",
+    "president": {
+      "name": "양제웅",
+      "boj": "wpdmd76",
+      "email": "dnd5187@gmail.com"
+    },
+    "vicePresident": {
+      "name": "김규민",
+      "boj": "simsim07",
+      "email": "kyumin2805@gmail.com"
+    }
+  },
+  {
     "year": "2025",
     "president": {
       "name": "김태윤",
