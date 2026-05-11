@@ -9,6 +9,7 @@ import { CleanWaterCupPage } from "../app/clean-water-cup-page/clean-water-cup-p
 import K512ApplyPage from "../app/k512-25-apply-page/k512-25-apply-page";
 import { Spc24ApplyPage } from "../app/spc-24-apply-page/spc-24-apply-page";
 import { Spc25ApplyPage } from "../app/spc-25-apply-page/spc-25-apply-page";
+import Cwc26ApplyPage from "../app/cwc-26-apply-page/cwc-26-apply-page";
 
 const _routes = {
   "/": {
@@ -34,6 +35,9 @@ const _routes = {
   },
   applyK512: {
     component: <K512ApplyPage />,
+  },
+  cwc26Apply: {
+    component: <Cwc26ApplyPage />,
   },
   contact: {
     component: <ContactPage />,
