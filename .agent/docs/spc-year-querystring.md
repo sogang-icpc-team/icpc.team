@@ -32,4 +32,4 @@
 
 ## 참고
 
-- `/history` 페이지(`selected-history-context.tsx`, `history-page.tsx`)는 같은 구조지만 이번 작업 범위 밖이라 쿼리스트링 미적용, `years.reverse()` 제자리 변경도 그대로 남아 있음
+- `/history` 페이지에도 동일한 동작을 적용함 → [history-year-querystring.md](./history-year-querystring.md)

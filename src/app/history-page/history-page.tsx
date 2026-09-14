@@ -21,7 +21,9 @@ const YearDropdown = () => {
     <YearSelectorDropdown
       year={year}
       setYear={setYear}
-      items={historyData.years.reverse().map((y) => ({ label: y, value: y }))}
+      items={[...historyData.years]
+        .reverse()
+        .map((y) => ({ label: y, value: y }))}
     />
   );
 };

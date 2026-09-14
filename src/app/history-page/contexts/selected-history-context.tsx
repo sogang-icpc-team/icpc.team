@@ -1,21 +1,36 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+} from "react";
+import { useSearchParams } from "react-router-dom";
 
 import {
   useHistoryDataContext,
   type THistoryData,
 } from "../../../contexts/history-data-context";
 
+export const HISTORY_YEAR_SEARCH_PARAM_KEY = "year";
+
 export type TSelectedHistoryContext = {
   year: number;
   setYear: React.Dispatch<React.SetStateAction<number>>;
   data: THistoryData["all"][number];
 };
-const SelectedHistoryContext = createContext<TSelectedHistoryContext>(
-  null as any,
+const SelectedHistoryContext = createContext<TSelectedHistoryContext | null>(
+  null,
 );
 
-export const useSelectedHistoryContext = () =>
-  useContext(SelectedHistoryContext);
+export const useSelectedHistoryContext = () => {
+  const context = useContext(SelectedHistoryContext);
+  if (!context) {
+    throw new Error(
+      "[ERROR] useSelectedHistoryContext must be used within SelectedHistoryContextProvider.",
+    );
+  }
+  return context;
+};
 
 export const SelectedHistoryContextProvider = ({
   initialValue,
@@ -25,14 +40,46 @@ export const SelectedHistoryContextProvider = ({
   children: React.ReactNode;
 }) => {
   const { all: historyDataset } = useHistoryDataContext();
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const [year, setYear] = useState(initialValue.year);
-  const [data, setData] = useState(historyDataset.find((d) => d.year === year));
+  const yearSearchParam = searchParams.get(HISTORY_YEAR_SEARCH_PARAM_KEY);
+  const searchParamData = historyDataset.find(
+    (d) => String(d.year) === yearSearchParam,
+  );
+  const hasInvalidYearSearchParam =
+    yearSearchParam !== null && searchParamData === undefined;
+
+  const year = searchParamData?.year ?? initialValue.year;
+  const data = historyDataset.find((d) => d.year === year);
 
   useEffect(() => {
-    setData(historyDataset.find((d) => d.year === year));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [year]);
+    if (!hasInvalidYearSearchParam) {
+      return;
+    }
+    setSearchParams(
+      (prev) => {
+        const next = new URLSearchParams(prev);
+        next.delete(HISTORY_YEAR_SEARCH_PARAM_KEY);
+        return next;
+      },
+      { replace: true },
+    );
+  }, [hasInvalidYearSearchParam, setSearchParams]);
+
+  const setYear = useCallback<TSelectedHistoryContext["setYear"]>(
+    (action) => {
+      const nextYear = typeof action === "function" ? action(year) : action;
+      setSearchParams(
+        (prev) => {
+          const next = new URLSearchParams(prev);
+          next.set(HISTORY_YEAR_SEARCH_PARAM_KEY, String(nextYear));
+          return next;
+        },
+        { replace: true },
+      );
+    },
+    [year, setSearchParams],
+  );
 
   if (!data) {
     throw new Error(
