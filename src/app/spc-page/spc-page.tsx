@@ -26,7 +26,7 @@ const YearDropdown = () => {
     <YearSelectorDropdown
       year={year}
       setYear={setYear}
-      items={spcData.years.reverse().map((y) => ({ label: y, value: y }))}
+      items={[...spcData.years].reverse().map((y) => ({ label: y, value: y }))}
     />
   );
 };

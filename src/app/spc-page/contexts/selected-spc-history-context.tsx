@@ -1,20 +1,30 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useCallback, useContext, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
+
 import {
   TSpcData,
   useSpcDataContext,
 } from "../../../contexts/spc-data-context";
+
+export const SPC_YEAR_SEARCH_PARAM_KEY = "year";
 
 export type TSelectedSpcHistoryContext = {
   year: number;
   setYear: React.Dispatch<React.SetStateAction<number>>;
   data: TSpcData["all"][number];
 };
-const SelectedSpcHistoryContext = createContext<TSelectedSpcHistoryContext>(
-  null as any,
-);
+const SelectedSpcHistoryContext =
+  createContext<TSelectedSpcHistoryContext | null>(null);
 
-export const useSelectedSpcHistoryContext = () =>
-  useContext(SelectedSpcHistoryContext);
+export const useSelectedSpcHistoryContext = () => {
+  const context = useContext(SelectedSpcHistoryContext);
+  if (!context) {
+    throw new Error(
+      "[ERROR] useSelectedSpcHistoryContext must be used within SelectedSpcHistoryContextProvider.",
+    );
+  }
+  return context;
+};
 
 export const SelectedSpcHistoryContextProvider = ({
   initialValue,
@@ -24,14 +34,46 @@ export const SelectedSpcHistoryContextProvider = ({
   children: React.ReactNode;
 }) => {
   const { all: spcDataset } = useSpcDataContext();
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const [year, setYear] = useState(initialValue.year);
-  const [data, setData] = useState(spcDataset.find((d) => d.year === year));
+  const yearSearchParam = searchParams.get(SPC_YEAR_SEARCH_PARAM_KEY);
+  const searchParamData = spcDataset.find(
+    (d) => String(d.year) === yearSearchParam,
+  );
+  const hasInvalidYearSearchParam =
+    yearSearchParam !== null && searchParamData === undefined;
+
+  const year = searchParamData?.year ?? initialValue.year;
+  const data = spcDataset.find((d) => d.year === year);
 
   useEffect(() => {
-    setData(spcDataset.find((d) => d.year === year));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [year]);
+    if (!hasInvalidYearSearchParam) {
+      return;
+    }
+    setSearchParams(
+      (prev) => {
+        const next = new URLSearchParams(prev);
+        next.delete(SPC_YEAR_SEARCH_PARAM_KEY);
+        return next;
+      },
+      { replace: true },
+    );
+  }, [hasInvalidYearSearchParam, setSearchParams]);
+
+  const setYear = useCallback<TSelectedSpcHistoryContext["setYear"]>(
+    (action) => {
+      const nextYear = typeof action === "function" ? action(year) : action;
+      setSearchParams(
+        (prev) => {
+          const next = new URLSearchParams(prev);
+          next.set(SPC_YEAR_SEARCH_PARAM_KEY, String(nextYear));
+          return next;
+        },
+        { replace: true },
+      );
+    },
+    [year, setSearchParams],
+  );
 
   if (!data) {
     throw new Error(
