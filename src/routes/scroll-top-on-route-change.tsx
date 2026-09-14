@@ -1,11 +1,19 @@
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import {
+  NavigationType,
+  useLocation,
+  useNavigationType,
+} from "react-router-dom";
 
 export const ScrollTopOnRouteChange = () => {
-  const location = useLocation();
+  const { key } = useLocation();
+  const navigationType = useNavigationType();
   useEffect(() => {
+    if (navigationType === NavigationType.Replace) {
+      return;
+    }
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
-  }, [location]);
+  }, [key, navigationType]);
   return <></>;
 };
